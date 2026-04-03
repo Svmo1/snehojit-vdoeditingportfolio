@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+@theme inline {
+  --font-pixel: var(--font-press-start-2p);
+  --color-neon-pink: #ff00ff;
+  --color-neon-blue: #00ffff;
+  --color-neon-green: #00ff00;
+  --color-neon-yellow: #ffff00;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom Selection */
+::selection {
+  background: var(--color-neon-pink);
+  color: #fff;
+}
+
+/* Hard Protect Module Visuals */
+.module-container {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+.about-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.about-image {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 12px auto 14px auto;
+  display: block;
+
+  border: 2px solid #00ffff;
+  box-shadow:
+    0 0 8px #00ffff,
+    0 0 18px #00ffff;
+}
+
+.level-text {
+  color: #00ffff;
+  font-family: var(--font-press-start-2p);
+  font-size: 0.75rem;
+  text-shadow: 0 0 5px currentColor;
+}
+
+/* ─── Expanded Module Layout ─────────────────────────────────────── */
+.expanded-container {
+  width: 100%;
+  height: 100%;
+  max-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ─── Video Wrapper (16:9 default) ───────────────────────────────── */
+.video-wrapper {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* 16:9 long-form landscape videos — height is the primary control */
+.video-wrapper.long {
+  height: 75vh;
+  max-height: 75vh;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* 9:16 short-form portrait videos */
+.video-wrapper.short {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.video-wrapper.short-inner {
+  width: clamp(280px, 32vw, 420px);
+  aspect-ratio: 9 / 16;
+  max-height: 80vh;
+}
+
+.video-wrapper.short-inner iframe,
+.video-wrapper.short-inner video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: none;
+  object-fit: contain;
+}
+
+/* Force video/iframe to obey wrapper bounds */
+.video-wrapper video,
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border: 0;
+}
+
+/* Long-form specific video constraint */
+.video-wrapper.long iframe,
+.video-wrapper.long video {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* ─── Content area below video ───────────────────────────────────── */
+.expanded-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ─── Mobile Restricted View ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  body {
+    overflow: hidden !important;
+    touch-action: none !important;
+  }
+  .mobile-overlay-container {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-overlay-container {
+    display: none !important;
+  }
+  .mobile-overlay-container.force-mobile {
+    display: flex !important;
+  }
+  body.force-mobile-lock {
+    overflow: hidden !important;
+    touch-action: none !important;
+  }
+}
