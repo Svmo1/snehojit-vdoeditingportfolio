@@ -5,7 +5,7 @@ import React from "react";
 export default function PixelLandscape({ type = "cyber-grid" }) {
     if (type === "cyber-grid") {
         return (
-            <div className="w-[80vw] shrink-0 h-full flex flex-col justify-end relative z-0">
+            <div className="w-[40vw] shrink-0 h-full flex flex-col justify-end relative z-0">
                 {/* Animated Grid on the Ground Level */}
                  <div className="w-full h-[150px] absolute bottom-0 opacity-40" 
                     style={{
@@ -30,7 +30,7 @@ export default function PixelLandscape({ type = "cyber-grid" }) {
 
     if (type === "retro-mountains") {
         return (
-             <div className="w-[100vw] shrink-0 h-full flex flex-col justify-end relative z-0 overflow-hidden">
+             <div className="w-[55vw] shrink-0 h-full flex flex-col justify-end relative z-0 overflow-hidden">
                 {/* 8-bit aesthetic mountains */}
                 <div className="absolute bottom-20 left-10 w-[200px] h-[150px] bg-[#1a0524] border-t-4 border-l-4 border-r-4 border-neon-pink/40 transform rotate-45 translate-y-[50%] skew-x-12 z-0"></div>
                 <div className="absolute bottom-20 left-32 w-[300px] h-[200px] bg-[#220731] border-t-4 border-l-4 border-r-4 border-neon-blue/40 transform rotate-45 translate-y-[50%] skew-x-12 z-0"></div>

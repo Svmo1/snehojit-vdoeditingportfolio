@@ -3,7 +3,7 @@ import ModuleCard from "./ModuleCard";
 
 export default function EditingLab() {
     return (
-        <div className="w-screen shrink-0 min-h-[85vh] my-[40px] flex flex-col justify-center items-center pb-8 scene-section relative text-white px-20">
+        <div className="w-screen shrink-0 min-h-[85vh] my-[20px] flex flex-col justify-center items-center pb-8 scene-section relative text-white px-20">
             <ModuleCard title="SHORT FORM" color="neon-green" animateType="slide-up">
                 <p className="font-pixel text-sm text-gray-300 text-center leading-8 mb-8 px-4 mt-8">
                     REELS • TIKTOKS • SHORTS <br/><br/>

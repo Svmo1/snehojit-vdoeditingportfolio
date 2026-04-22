@@ -32,7 +32,7 @@ export default function StudioRoom() {
     };
 
     return (
-        <div className="w-screen shrink-0 min-h-[85vh] my-[40px] flex flex-col justify-center items-center pb-8 scene-section relative text-white px-20">
+        <div className="w-screen shrink-0 min-h-[85vh] my-[20px] flex flex-col justify-center items-center pb-8 scene-section relative text-white px-20">
             <ModuleCard title="ABOUT ME" color="neon-blue" animateType="fade-scale">
                 <div className="about-card">
                     <img

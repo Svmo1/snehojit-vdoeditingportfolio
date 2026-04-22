@@ -148,25 +148,16 @@ body {
 }
 
 /* ─── Mobile Restricted View ─────────────────────────────────────── */
-@media (max-width: 768px) {
-  body {
-    overflow: hidden !important;
-    touch-action: none !important;
-  }
-  .mobile-overlay-container {
-    display: flex !important;
-  }
+/* Overlay is hidden by default — only JS (user-agent detection) controls visibility */
+.mobile-overlay-container {
+  display: none !important;
 }
 
-@media (min-width: 769px) {
-  .mobile-overlay-container {
-    display: none !important;
-  }
-  .mobile-overlay-container.force-mobile {
-    display: flex !important;
-  }
-  body.force-mobile-lock {
-    overflow: hidden !important;
-    touch-action: none !important;
-  }
+.mobile-overlay-container.force-mobile {
+  display: flex !important;
+}
+
+body.force-mobile-lock {
+  overflow: hidden !important;
+  touch-action: none !important;
 }

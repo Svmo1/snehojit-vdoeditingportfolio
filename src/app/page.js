@@ -13,7 +13,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="bg-black text-white selection:bg-neon-pink selection:text-white min-h-screen">
+    <main className="bg-black text-white selection:bg-neon-pink selection:text-white overflow-hidden">
       
       {phase === "arcade" && (
         <IntroScreen onStart={() => setPhase("scene")} />

@@ -37,18 +37,24 @@ export default function StreetProp({ type = "lamp" }) {
             </div>
         );
     }
-    
+
     if (type === "sign") {
         return (
-            <div className="flex flex-col justify-end items-center h-full pb-8 shrink-0 w-[300px] z-10">
+            <div className="flex flex-col justify-end items-center h-full pb-8 shrink-0 w-[220px] z-10">
+                <style>{`
+                    @keyframes arrowPulse {
+                        0%, 100% { opacity: 0.5; transform: translateX(0); }
+                        50% { opacity: 1; transform: translateX(4px); }
+                    }
+                    .next-sign-arrow { animation: arrowPulse 1.2s ease-in-out infinite; }
+                `}</style>
                 <div className="relative">
-                    {/* Arrow sign pointing right */}
-                    <div className="w-[150px] h-[50px] bg-black border-2 border-neon-yellow shadow-[0_0_15px_rgba(255,255,0,0.5)] flex items-center justify-center relative z-20">
-                        <span className="font-pixel text-neon-yellow text-sm">NEXT STAGE</span>
-                        <div className="absolute right-[-14px] top-[14px] w-[18px] h-[18px] bg-black border-t-2 border-r-2 border-neon-yellow transform rotate-45 z-10"></div>
+                    <div className="w-[140px] h-[44px] bg-black border border-neon-yellow/70 shadow-[0_0_12px_rgba(255,255,0,0.35)] flex items-center justify-center gap-2 relative z-20">
+                        <span className="font-pixel text-neon-yellow/80 text-[9px] tracking-widest">NEXT</span>
+                        <span className="next-sign-arrow font-pixel text-neon-yellow text-sm">▶</span>
                     </div>
                     {/* Pole */}
-                    <div className="w-[8px] h-[120px] bg-gray-700 mx-auto mt-[-10px] relative z-0 border-l border-gray-500"></div>
+                    <div className="w-[6px] h-[100px] bg-gray-800 mx-auto mt-[-2px] relative z-0 border-l border-gray-600"></div>
                 </div>
             </div>
         );

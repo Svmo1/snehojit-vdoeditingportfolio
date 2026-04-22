@@ -3,7 +3,7 @@ import ModuleCard from "./ModuleCard";
 
 export default function CinemaBuilding() {
     return (
-        <div className="w-screen shrink-0 min-h-[85vh] my-[40px] flex flex-col justify-center items-center pb-8 scene-section relative text-white px-20">
+        <div className="w-screen shrink-0 min-h-[85vh] my-[20px] flex flex-col justify-center items-center pb-8 scene-section relative text-white px-20">
             <ModuleCard title="LONG FORM EDITS" color="neon-pink" animateType="expand">
                 <div className="w-[90%] h-[160px] bg-black/60 border border-neon-pink/50 flex items-center justify-center relative overflow-hidden mb-8 mt-4 shadow-[inset_0_0_20px_rgba(255,0,255,0.2)]">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,0,255,0.1),_transparent_70%)]"></div>

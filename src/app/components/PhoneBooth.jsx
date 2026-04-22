@@ -3,7 +3,7 @@ import ModuleCard from "./ModuleCard";
 
 export default function PhoneBooth() {
     return (
-        <div className="w-screen shrink-0 min-h-[85vh] my-[40px] flex flex-col justify-center items-center pb-8 scene-section relative text-white px-20">
+        <div className="w-screen shrink-0 min-h-[85vh] my-[20px] flex flex-col justify-center items-center pb-8 scene-section relative text-white px-20">
             <ModuleCard title="CALL TERMINAL" color="neon-yellow" animateType="glitch">
                 <div className="flex flex-col items-center justify-center w-full h-full pb-10 mt-12">
                     {/* Blinking Status Light */}

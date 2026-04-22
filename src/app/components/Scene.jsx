@@ -45,15 +45,16 @@ export default function Scene() {
                     // 2. Safety Curtain Logic
                     const exit = document.getElementById('exit-screen-overlay');
                     if (exit) {
-                        // We hit 100% BLACK at 99% scroll. 
-                        // This gives a 1% 'safety buffer' so the user never sees the black void.
-                        const progress = (self.progress - 0.95) / (0.99 - 0.95);
+                        // Fade in starts at 90% scroll, fully opaque at 97%.
+                        // This ensures the full black cover lands well before
+                        // the GSAP pin spacer ends, preventing any void flash.
+                        const progress = (self.progress - 0.90) / (0.97 - 0.90);
                         const opacity = Math.min(Math.max(progress, 0), 1);
 
                         gsap.set(exit, { 
                             opacity: opacity, 
                             display: opacity > 0 ? 'flex' : 'none',
-                            pointerEvents: opacity >= 0.9 ? 'auto' : 'none' 
+                            pointerEvents: opacity >= 0.8 ? 'auto' : 'none' 
                         });
                     }
                 }
@@ -310,13 +311,10 @@ export default function Scene() {
 
                     <StudioRoom />
 
-                    <StreetProp type="lamp" />
-                    <div className="w-[30vw] shrink-0 h-full"></div>
-
                     <PhoneBooth />
 
                     {/* Outro spacing */}
-                    <div className="w-[50vw] shrink-0 h-full" id="final-dead-zone" />
+                    <div className="w-[30vw] shrink-0 h-full" id="final-dead-zone" />
                 </div>
                 {/* Ground Layer and 5. Horizon Glow */}
                 <div className="absolute bottom-0 w-full h-20 bg-neutral-950 border-t border-neon-green/30 z-20 flex">

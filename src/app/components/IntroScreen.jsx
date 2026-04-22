@@ -881,7 +881,8 @@ export default function IntroScreen({ onStart }) {
                 <div
                     id="standby-overlay"
                     className="absolute inset-0 z-[200] overflow-hidden"
-                    style={{ background: '#000000', pointerEvents: isVideoPlaying ? 'none' : 'auto' }}
+                    style={{ background: '#000000', pointerEvents: isVideoPlaying ? 'none' : 'auto', cursor: soundPhase === 'ready' ? 'pointer' : 'default' }}
+                    onClick={soundPhase === 'ready' && !isVideoPlaying && !hasInteracted ? handleInitialInteraction : undefined}
                 >
                     {/* â”€â”€ All keyframes & CSS â”€â”€ */}
                     <style>{`
@@ -1308,7 +1309,6 @@ export default function IntroScreen({ onStart }) {
                             {soundPhase === 'ready' && (
                                 <div
                                     id="standby-powerOn"
-                                    onClick={!isVideoPlaying && !hasInteracted ? handleInitialInteraction : undefined}
                                     onMouseEnter={playHoverPowerOn}
                                     style={{
                                         fontFamily: "'Press Start 2P', monospace",

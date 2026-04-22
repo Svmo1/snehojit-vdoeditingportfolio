@@ -706,9 +706,12 @@ function ExpandedModule({ rect, title, color, bgClass, textClass, borderClass, o
   const contentRef = useRef(null);
 
   useEffect(() => {
-    // Pause ambient while video is visible
+    // Fade out ambient audio smoothly on expand (do NOT pause — avoids restart on restore)
     const ambient = typeof window !== "undefined" ? window.__ambientAudio : null;
-    if (ambient) ambient.pause();
+    const ambientBaseVolume = ambient ? ambient.volume : 0.18;
+    if (ambient) {
+      gsap.to(ambient, { volume: 0, duration: 0.4, ease: "power2.out" });
+    }
 
     // Lock body scroll logically
     document.body.style.overflow = "hidden";
@@ -771,9 +774,11 @@ function ExpandedModule({ rect, title, color, bgClass, textClass, borderClass, o
     return () => {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
-      // Resume ambient when module closes
-      const ambient = typeof window !== "undefined" ? window.__ambientAudio : null;
-      if (ambient) ambient.play().catch(() => { });
+      // Fade ambient audio back to its original level (no restart needed)
+      const ambientOnClose = typeof window !== "undefined" ? window.__ambientAudio : null;
+      if (ambientOnClose) {
+        gsap.to(ambientOnClose, { volume: ambientBaseVolume, duration: 0.4, ease: "power2.out" });
+      }
     };
   }, []);
 

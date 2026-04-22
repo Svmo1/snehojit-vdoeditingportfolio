@@ -21,29 +21,15 @@ export default function MobileOverlay() {
       }))
     );
 
-    // JS strictly enforced for "Desktop Site" fake-width bypasses.
-    // Native mobile viewports are caught instantly by pure CSS without JS delay.
-    const checkDevice = () => {
-      const screenWidth = window.screen.width;
-      const screenHeight = window.screen.height;
-      const minDimension = Math.min(screenWidth, screenHeight);
-      
-      if (minDimension <= 768) {
-        setForceMobile(true);
-        document.body.classList.add('force-mobile-lock');
-      } else {
-        setForceMobile(false);
-        document.body.classList.remove('force-mobile-lock');
-      }
-    };
+    // Detect actual mobile devices via user agent — unaffected by screen size or zoom.
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-    checkDevice();
-    window.addEventListener('resize', checkDevice);
-    window.addEventListener('orientationchange', checkDevice);
-    
+    if (isMobile) {
+      setForceMobile(true);
+      document.body.classList.add('force-mobile-lock');
+    }
+
     return () => {
-      window.removeEventListener('resize', checkDevice);
-      window.removeEventListener('orientationchange', checkDevice);
       document.body.classList.remove('force-mobile-lock');
     };
   }, []);
